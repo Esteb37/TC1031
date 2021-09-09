@@ -80,7 +80,7 @@ int main(int argc, char* argv[]) {
 	sorts.ordenaMerge(prueba);
 
 	cout << "\n" <<"7.- esperada "  << 5 << " programa " << sorts.busqSecuencial(prueba, 897) << "\n";
-  cout <<	(5 == sorts.busqSecuencial(prueba, 897) ? "success\n" : "fail\n");
+    cout <<	(5 == sorts.busqSecuencial(prueba, 897) ? "success\n" : "fail\n");
 
 	cout << "\n" <<"8.- esperada "  << -1  << " programa " << sorts.busqSecuencial(prueba, 100) << "\n";
 	cout <<	(-1 == sorts.busqSecuencial(prueba, 100) ? "success\n" : "fail\n");
