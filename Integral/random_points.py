@@ -1,3 +1,11 @@
+"""
+  Programa para generar una lista de coordenadas aleatoria
+  Autor: Esteban Padilla Cerdio
+  Creado: 19 de septiembre de 2021
+  Última versión: 20 de septiembre de 2021
+  Título: random_points.py
+"""
+
 import random
 
 points = int(input("Number of points: "));
