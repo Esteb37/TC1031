@@ -16,9 +16,11 @@ int main()
 
   cout << "---- Sorted by X Coordinates: ----" << endl;
   data.sortByX();
+  data.print();
 
   cout << "---- Sorted by Y Coordinates: ----" << endl;
   data.sortByY();
+  data.print();
 
   return 0;
 }

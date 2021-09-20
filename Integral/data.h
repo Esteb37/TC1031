@@ -129,7 +129,7 @@ void Data::mergeArray(vector<int> &A, vector<int> &B, vector<int> &C, vector<int
   {
     for (; j <= high; j++)
     {
-      B[k++] = A[j];
+      B[k] = A[j];
       D[k++] = C[j];
     }
   }
@@ -137,7 +137,7 @@ void Data::mergeArray(vector<int> &A, vector<int> &B, vector<int> &C, vector<int
   {
     for (; i <= mid; i++)
     {
-      B[k++] = A[i];
+      B[k] = A[i];
       D[k++] = C[i];
     }
   }
