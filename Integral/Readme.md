@@ -6,7 +6,7 @@
 
 Este programa tiene como propósito recibir una lista de coordenadas por las cuales un sistema robótico de movimiento autónomo debe cruzar, generando un camino optimizado que las atraviese todas.
 
-![Path]("https://i.stack.imgur.com/CJFw1.png")
+<img src="https://i.stack.imgur.com/CJFw1.png" width=100px height=50px/>
 
 ## SICT0302B: Toma decisiones
 
