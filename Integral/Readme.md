@@ -14,7 +14,7 @@ Este programa tiene como propósito recibir una lista de coordenadas por las cua
 
 ### Selecciona un algoritmo de ordenamiento adecuado al problema
 
-El programa utiliza un algoritmo tipo Merge Sort para ordenar las coordenadas, ya sea basándose en la coordenada X o en la coordenada Y. En ambos casos, utiliza el algoritmo para ordenar ambas listas, usando una de ellas como referencia. El motivo por el cual se utilizó este algoritmo es porque es rápido en la mayoría de los casos, y su peor caso, que es cuando está casi ordenada, será raro encontrarlo, ya que los puntos están generados aleatoriamente. En el archivo main.h se puede ver la ejecución de un ordenamiento con la coordenada X como referencia en la línea 18, y un ordenamiento con la coordenada Y como referencia en la línea 22.78.
+El programa utiliza un algoritmo tipo Merge Sort para ordenar las coordenadas, ya sea basándose en la coordenada X o en la coordenada Y. En ambos casos, utiliza el algoritmo para ordenar ambas listas, usando una de ellas como referencia. El motivo por el cual se utilizó este algoritmo es porque es rápido en la mayoría de los casos, y su peor caso, que es cuando está casi ordenada, será raro encontrarlo, ya que los puntos están generados aleatoriamente. En el archivo main.h se puede ver la ejecución de un ordenamiento con la coordenada X como referencia en la línea 18, y un ordenamiento con la coordenada Y como referencia en la línea 22.
 
 ### Usa un árbol adecuado para resolver un problema
 
