@@ -4,6 +4,14 @@
 #include <vector>
 using namespace std;
 
+/*
+  Clase para manejar los datos recibidos, ordenarlos y procesarlos.
+  Autor: Esteban Padilla Cerdio
+  Creado: 19 de septiembre de 2021
+  Última versión: 20 de septiembre de 2021
+  Título: data.h
+*/
+
 class Data
 {
 public:
@@ -28,6 +36,9 @@ private:
   void mergeSplit(vector<int> &, vector<int> &, vector<int> &, vector<int> &, int, int);
 };
 
+/*
+  Lee los datos de coordenadas de un archivo de texto y los guarda en vectores.
+*/
 void Data::readFile(string fileName)
 {
   ifstream inFile;
@@ -55,6 +66,9 @@ void Data::readFile(string fileName)
   inFile.close();
 }
 
+/*
+  Imprime la lista de coordenadas
+*/
 void Data::print()
 {
 
