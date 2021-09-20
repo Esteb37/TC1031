@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "iostream": "c",
-        "exception.h": "c",
-        "array": "cpp",
-        "initializer_list": "cpp",
-        "utility": "cpp"
-    }
-}

@@ -1,1 +1,0 @@
-g++ unit.h exception.h sorts.h main.cpp -o sorts
