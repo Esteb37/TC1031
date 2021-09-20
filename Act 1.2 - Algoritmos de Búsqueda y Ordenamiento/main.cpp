@@ -86,9 +86,14 @@ int main()
 
 	sorts.ordenaMerge(prueba);
 
+<<<<<<< HEAD
 	cout << "\n"
 			 << "7.- esperada " << 5 << " programa " << sorts.busqSecuencial(prueba, 897) << "\n";
 	cout << (5 == sorts.busqSecuencial(prueba, 897) ? "success\n" : "fail\n");
+=======
+	cout << "\n" <<"7.- esperada "  << 5 << " programa " << sorts.busqSecuencial(prueba, 897) << "\n";
+    cout <<	(5 == sorts.busqSecuencial(prueba, 897) ? "success\n" : "fail\n");
+>>>>>>> 8ab7d75685dfd9fccfe9a8291952a2cb2a015b2a
 
 	cout << "\n"
 			 << "8.- esperada " << -1 << " programa " << sorts.busqSecuencial(prueba, 100) << "\n";
