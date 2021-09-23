@@ -4,6 +4,9 @@
     "initializer_list": "cpp",
     "utility": "cpp",
     "*.tcc": "c",
-    "list": "c"
-  }
+    "list": "c",
+    "functional": "cpp",
+    "iosfwd": "cpp",
+    "tuple": "cpp"
+}
 }
