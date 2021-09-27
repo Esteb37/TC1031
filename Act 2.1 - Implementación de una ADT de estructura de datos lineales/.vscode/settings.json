@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "cstdio": "c",
+    "deque": "c",
+    "string": "c",
+    "vector": "c",
+    "functional": "c",
+    "*.tcc": "c"
+  }
+}
