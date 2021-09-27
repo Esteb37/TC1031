@@ -38,7 +38,7 @@ La complejidad es O(N), ya que se debe atravesar la lista hasta encontrar el val
 
 La complejidad es constante, O(1), ya que no importa la longitud de la lista, se ejecuta siempre la misma única acción.
 
-# search
+# toString
 
 ## Análisis de complejidad temporal
 
