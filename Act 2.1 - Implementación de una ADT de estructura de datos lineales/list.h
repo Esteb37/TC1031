@@ -1,8 +1,6 @@
 /*
  * linkedlist.h
  *
- *  Created on: 05/08/2015
- *      Author: pperezm
  */
 
 #ifndef LINKEDLIST_H_
@@ -13,41 +11,41 @@
 #include "exception.h"
 
 template <class T>
-class List;
+class DList;
 template <class T>
 class ListIterator;
 
 template <class T>
-class Link
+class DLink
 {
 private:
-  Link(T);
-  Link(T, Link<T> *);
-  Link(const Link<T> &);
+  DLink(T);
+  DLink(T, DLink<T> *);
+  DLink(const DLink<T> &);
 
   T value;
-  Link<T> *next = 0;
+  DLink<T> *next = 0;
 
-  friend class List<T>;
+  friend class DList<T>;
   friend class ListIterator<T>;
 };
 
 template <class T>
-Link<T>::Link(T val) : value(val) {}
+DLink<T>::DLink(T val) : value(val) {}
 
 template <class T>
-Link<T>::Link(T val, Link *nxt) : value(val), next(nxt) {}
+DLink<T>::DLink(T val, DLink *nxt) : value(val), next(nxt) {}
 
 template <class T>
-Link<T>::Link(const Link<T> &source) {}
+DLink<T>::DLink(const DLink<T> &source) {}
 
 template <class T>
-class List
+class DList
 {
 public:
-  List();
-  List(const List<T> &) throw(OutOfMemory);
-  ~List();
+  DList();
+  DList(const DList<T> &) throw(OutOfMemory);
+  ~DList();
 
   void addFirst(T) throw(OutOfMemory);
   void insertion(T) throw(OutOfMemory);
@@ -61,7 +59,7 @@ public:
   bool empty() const;
   std::string toString() const;
 
-  Link<T> *head = 0;
+  DLink<T> *head = 0;
 
 private:
   int size = 0;
@@ -70,23 +68,23 @@ private:
 };
 
 template <class T>
-List<T>::List() {}
+DList<T>::DList() {}
 
 template <class T>
-List<T>::~List()
+DList<T>::~DList()
 {
 }
 
 template <class T>
-bool List<T>::empty() const
+bool DList<T>::empty() const
 {
   return size == 0;
 }
 
 template <class T>
-void List<T>::addFirst(T val) throw(OutOfMemory)
+void DList<T>::addFirst(T val) throw(OutOfMemory)
 {
-  Link<T> *newLink = new Link<T>(val, head);
+  DLink<T> *newLink = new DLink<T>(val, head);
 
   if (newLink == 0)
   {
@@ -98,9 +96,9 @@ void List<T>::addFirst(T val) throw(OutOfMemory)
 }
 
 template <class T>
-void List<T>::insertion(T val) throw(OutOfMemory)
+void DList<T>::insertion(T val) throw(OutOfMemory)
 {
-  Link<T> *p, *newLink = new Link<T>(val);
+  DLink<T> *p, *newLink = new DLink<T>(val);
 
   if (newLink == 0)
   {
@@ -125,9 +123,9 @@ void List<T>::insertion(T val) throw(OutOfMemory)
 }
 
 template <class T>
-T List<T>::removeFirst() throw(NoSuchElement)
+T DList<T>::removeFirst() throw(NoSuchElement)
 {
-  Link<T> *p = head;
+  DLink<T> *p = head;
 
   if (empty())
   {
@@ -144,10 +142,10 @@ T List<T>::removeFirst() throw(NoSuchElement)
 }
 
 template <class T>
-std::string List<T>::toString() const
+std::string DList<T>::toString() const
 {
   std::stringstream aux;
-  Link<T> *p;
+  DLink<T> *p;
 
   p = head;
 
@@ -169,10 +167,10 @@ std::string List<T>::toString() const
 }
 
 template <class T>
-List<T>::List(const List<T> &source) throw(OutOfMemory)
+DList<T>::DList(const DList<T> &source) throw(OutOfMemory)
 {
 
-  Link<T> *p, *q;
+  DLink<T> *p, *q;
 
   if (source.empty())
   {
@@ -182,7 +180,7 @@ List<T>::List(const List<T> &source) throw(OutOfMemory)
   else
   {
     p = source.head;
-    head = new Link<T>(p->value);
+    head = new DLink<T>(p->value);
     if (head == 0)
     {
       throw OutOfMemory();
@@ -193,7 +191,7 @@ List<T>::List(const List<T> &source) throw(OutOfMemory)
 
     while (p != 0)
     {
-      q->next = new Link<T>(p->value);
+      q->next = new DLink<T>(p->value);
       if (q->next == 0)
       {
         throw OutOfMemory();
@@ -207,10 +205,10 @@ List<T>::List(const List<T> &source) throw(OutOfMemory)
 }
 
 template <class T>
-bool List<T>::update(int index, T val) throw(IndexOutOfBounds)
+bool DList<T>::update(int index, T val) throw(IndexOutOfBounds)
 {
 
-  Link<T> *p = head;
+  DLink<T> *p = head;
 
   if (index >= size || index < 0)
   {
@@ -228,10 +226,10 @@ bool List<T>::update(int index, T val) throw(IndexOutOfBounds)
 }
 
 template <class T>
-int List<T>::search(T val) const
+int DList<T>::search(T val) const
 {
 
-  Link<T> *p = head;
+  DLink<T> *p = head;
 
   int pos = 0;
   while (p != 0)
@@ -248,10 +246,10 @@ int List<T>::search(T val) const
 }
 
 template <class T>
-T List<T>::deleteAt(int index) throw(IndexOutOfBounds)
+T DList<T>::deleteAt(int index) throw(IndexOutOfBounds)
 {
 
-  Link<T> *q, *p = head;
+  DLink<T> *q, *p = head;
   int val;
 
   if (index == 0)

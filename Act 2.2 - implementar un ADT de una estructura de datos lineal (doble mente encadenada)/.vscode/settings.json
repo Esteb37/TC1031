@@ -1,0 +1,19 @@
+{
+  "files.associations": {
+    "*.tcc": "c",
+    "cmath": "c",
+    "random": "c",
+    "fstream": "c",
+    "functional": "c",
+    "istream": "c",
+    "limits": "c",
+    "ostream": "c",
+    "sstream": "c",
+    "streambuf": "c",
+    "tuple": "c",
+    "cstdio": "c",
+    "deque": "c",
+    "string": "c",
+    "vector": "c"
+  }
+}
