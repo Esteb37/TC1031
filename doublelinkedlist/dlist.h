@@ -31,10 +31,10 @@ private:
 };
 
 template <class T>
-DLink<T>::DLink(T val) {}
+DLink<T>::DLink(T val):value(val),previous(0),next(0) {}
 
 template <class T>
-DLink<T>::DLink(T val, DLink *prev, DLink* nxt) {}
+DLink<T>::DLink(T val, DLink *prev, DLink* nxt):value(val),previous(prev),next(nxt) {}
 
 template <class T>
 DLink<T>::DLink(const DLink<T> &source) {}
@@ -72,9 +72,9 @@ public:
 	bool removeLastOcurrence(T);
 
 private:
-	DLink<T> *head;
-	DLink<T> *tail;
-	int 	 size;
+	DLink<T> *head = 0;
+	DLink<T> *tail = 0;
+	int 	 size = 0;
 
 	friend class DListIterator<T>;
 };
@@ -89,7 +89,7 @@ DList<T>::~DList() {
 
 template <class T>
 bool DList<T>::empty() const {
-	return 0;
+	return size == 0;
 }
 
 template <class T>
@@ -119,16 +119,72 @@ T DList<T>::getFirst() const throw (NoSuchElement) {
 	return head->value;
 }
 
+
 template <class T>
-void DList<T>::addFirst(T val) throw (OutOfMemory) {
+void DList<T>::addFirst(T val) throw(OutOfMemory)
+{
+		DLink<T> *newLink;
+
+	newLink = new DLink<T>(val);
+	if (newLink == 0) {
+		throw OutOfMemory();
+	}
+
+	if (empty()) {
+		head = newLink;
+		tail = newLink;
+	} else {
+		newLink->next = head;
+		head->previous = newLink;
+		head = newLink;
+	}
+	size++;
 }
 
 template <class T>
-void DList<T>::add(T val) throw (OutOfMemory) {
-}
+void DList<T>::add(T val) throw(OutOfMemory)
+{
+	DLink<T> *newLink;
 
+	newLink = new DLink<T>(val);
+	if (newLink == 0) {
+		throw OutOfMemory();
+	}
+
+	if (empty()) {
+		head = newLink;
+		tail = newLink;
+	} else {
+		tail->next = newLink;
+		newLink->previous = tail;
+		tail = newLink;
+	}
+	size++;
+}
 template <class T>
 T DList<T>::removeFirst() throw (NoSuchElement) {
+
+    
+    DLink<T> *p = head;
+    T val;
+
+    if(empty()){
+        throw NoSuchElement();
+    }
+
+    val = p->value;
+    
+    if(head == tail){
+        head = 0;
+        tail = 0;
+    } else {
+        head = p->next;
+        p->next->previous = 0;
+    }
+    delete p;
+    size--;
+
+    return val;
 }
 
 template <class T>
@@ -300,6 +356,19 @@ int DList<T>::indexOf(T val) const {
 
 template <class T>
 int DList<T>::lastIndexOf(T val) const {
+    int index;
+	DLink<T> *p;
+
+	index = size-1;
+	p = tail;
+	while (p != 0) {
+		if (p->value == val) {
+			return index;
+		}
+		index--;
+		p = p->previous;
+	}
+	return -1;
 }
 
 template <class T>
@@ -337,11 +406,63 @@ T DList<T>::remove(int index) throw (IndexOutOfBounds) {
 
 template <class T>
 bool DList<T>::removeFirstOcurrence(T val) {
+    
+	DLink<T> *p;
+
+	p = head;
+	
+	while (p->next != 0) {
+		p = p->next;
+		
+        if(val == p->value){
+
+            if(p->previous == 0){
+                head = p->next;
+                p->next->previous = p->previous;
+            } else{
+                p->previous->next = p->next;
+            }
+            
+            if (p->next != 0) {
+                p->next->previous = p->previous;
+            }
+            size--;
+
+            delete p;
+            return true;
+        }
+	}
 	return false;
 }
 
 template <class T>
 bool DList<T>::removeLastOcurrence(T val) {
+	DLink<T> *p;
+
+	p = tail;
+	
+	while (p->previous != 0) {
+		p = p->previous;
+		
+        if(val == p->value){
+
+            if(p->previous == 0){
+                head = p->next;
+                p->next->previous = p->previous;
+            } else{
+                p->previous->next = p->next;
+            }
+            
+            if (p->next != 0) {
+                p->next->previous = p->previous;
+            }
+            size--; 
+
+            delete p;
+            return true;
+        }
+	}
+
 	return false;
 }
 
