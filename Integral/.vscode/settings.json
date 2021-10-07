@@ -1,0 +1,11 @@
+{
+	"files.associations": {
+		"array": "cpp",
+		"initializer_list": "cpp",
+		"utility": "cpp",
+		"vector": "c",
+		"dlist.h": "c",
+		"iostream": "c",
+		"ostream": "c"
+	}
+}

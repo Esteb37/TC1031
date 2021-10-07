@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <fstream>
 #include <vector>
+#include "dlist.h"
 using namespace std;
 
 /*
@@ -12,172 +13,247 @@ using namespace std;
   Título: data.h
 */
 
+template <class T>
+class DList;
+
+template <class T>
 class Data
 {
 public:
-  Data(){};
+	Data(){};
 
-  void readFile(string);
-  void print();
-  void sortByX();
-  void sortByY();
+	void readFile(string);
+	void print();
+	void sortByX();
+	void sortByY();
+	void generatePath();
+	void printPath();
+	void testPath();
 
-  vector<int> getXCoords();
-  vector<int> getYCoords();
+	vector<T> getXCoords();
+	vector<T> getYCoords();
+	DList<T> getPath();
+
+	DList<T> path;
 
 private:
-  vector<int> x_coords;
-  vector<int> y_coords;
+	vector<T> x_coords;
+	vector<T> y_coords;
 
-  void mergeSort(bool);
+	DList<T> x_list;
+	DList<T> y_list;
 
-  void mergeArray(vector<int> &, vector<int> &, vector<int> &, vector<int> &, int, int, int);
-  void copyArray(vector<int> &, vector<int> &, int, int);
-  void mergeSplit(vector<int> &, vector<int> &, vector<int> &, vector<int> &, int, int);
+	void mergeSort(bool);
+
+	void mergeArray(vector<T> &, vector<T> &, vector<T> &, vector<T> &, int, int, int);
+	void copyArray(vector<T> &, vector<T> &, int, int);
+	void mergeSplit(vector<T> &, vector<T> &, vector<T> &, vector<T> &, int, int);
 };
 
 /*
   Lee los datos de coordenadas de un archivo de texto y los guarda en vectores.
 */
-void Data::readFile(string fileName)
+template <class T>
+void Data<T>::readFile(string fileName)
 {
-  ifstream inFile;
+	ifstream inFile;
 
-  inFile.open(fileName);
-  if (!inFile)
-  {
-    cout << "No se encontró el archivo";
-    return;
-  }
+	inFile.open(fileName);
+	if (!inFile)
+	{
+		cout << "No se encontró el archivo";
+		return;
+	}
 
-  int coord;
+	T coord;
 
-  bool isX = true;
-  while (inFile >> coord)
-  {
-    if (isX)
-      x_coords.push_back(coord);
-    else
-      y_coords.push_back(coord);
+	bool isX = true;
+	while (inFile >> coord)
+	{
+		if (isX)
+			x_coords.push_back(coord);
+		else
+			y_coords.push_back(coord);
 
-    isX = !isX;
-  }
+		isX = !isX;
+	}
 
-  inFile.close();
+	inFile.close();
 }
 
 /*
   Imprime la lista de coordenadas
 */
-void Data::print()
+template <class T>
+void Data<T>::print()
 {
 
-  for (int i = 0; i < x_coords.size(); i++)
-  {
-    cout << x_coords[i] << " " << y_coords[i] << endl;
-  }
+	for (int i = 0; i < x_coords.size(); i++)
+	{
+		cout << x_coords[i] << " " << y_coords[i] << endl;
+	}
 }
 
-vector<int> Data::getXCoords()
+template <class T>
+vector<T> Data<T>::getXCoords()
 {
-  return x_coords;
+	return x_coords;
 }
 
-vector<int> Data::getYCoords()
+template <class T>
+vector<T> Data<T>::getYCoords()
 {
-  return y_coords;
+	return y_coords;
 }
 
-void Data::sortByX()
+template <class T>
+void Data<T>::sortByX()
 {
-  mergeSort(true);
+	mergeSort(true);
 }
 
-void Data::sortByY()
+template <class T>
+void Data<T>::sortByY()
 {
-  mergeSort(false);
+	mergeSort(false);
 }
 
-void Data::mergeSort(bool byX)
+template <class T>
+void Data<T>::generatePath()
 {
 
-  int size = x_coords.size();
-  vector<int> tmp_main(size);
-  vector<int> tmp_other(size);
+	path.clear();
 
-  if (byX)
-  {
-    mergeSplit(x_coords, tmp_main, y_coords, tmp_other, 0, size - 1);
-  }
-  else
-  {
-    mergeSplit(y_coords, tmp_main, x_coords, tmp_other, 0, size - 1);
-  }
+	Coordinate<T> aux;
+
+	for (int i = 0; i < x_coords.size(); i++)
+	{
+		aux.set(x_coords[i], y_coords[i]);
+		path.add(aux);
+	}
 }
 
-void Data::mergeArray(vector<int> &A, vector<int> &B, vector<int> &C, vector<int> &D, int low, int mid, int high)
+template <class T>
+void Data<T>::printPath()
 {
-  int i, j, k;
-
-  i = low;
-  j = mid + 1;
-  k = low;
-
-  while (i <= mid && j <= high)
-  {
-    if (A[i] < A[j])
-    {
-      B[k] = A[i];
-      D[k] = C[i];
-      i++;
-    }
-    else
-    {
-      B[k] = A[j];
-      D[k] = C[j];
-      j++;
-    }
-    k++;
-  }
-  if (i > mid)
-  {
-    for (; j <= high; j++)
-    {
-      B[k] = A[j];
-      D[k++] = C[j];
-    }
-  }
-  else
-  {
-    for (; i <= mid; i++)
-    {
-      B[k] = A[i];
-      D[k++] = C[i];
-    }
-  }
+	cout << path.toString();
 }
 
-void Data::copyArray(vector<int> &A, vector<int> &B, int low, int high)
+template <class T>
+void Data<T>::testPath()
 {
-  for (int i = low; i <= high; i++)
-  {
-    A[i] = B[i];
-  }
+	Coordinate<int> test(0, 0);
+	path.add(test);
+
+	cout << "\n\nFirst coordinate: " << path.getFirst().toString();
+
+	cout << "\n\nLast coordinate: " << path.getLast().toString();
+
+	cout << "\n\nLength: " << path.length();
+
+	cout << "\n\nRemoved 15th coordinate with value: " << path.remove(15).toString();
+
+	cout << "\nLength: " << path.length();
+
+	cout << "\n\nAdded coordinate with value: " << test.toString();
+	cout << "\nLength: " << path.length();
+
+	cout << "\n\nList contains (0, 0)?: " << path.contains(test);
+
+	test.set(5, 5);
+
+	cout << "\n\nSet (5, 5) in position 5.";
+	path.set(5, test);
+
+	cout << "\n\nValue at position 5: " << path.get(5).toString();
+
+	cout << "\n\nIndex of (5, 5): " << path.indexOf(test);
 }
 
-void Data::mergeSplit(vector<int> &A, vector<int> &B, vector<int> &C, vector<int> &D, int low, int high)
+template <class T>
+void Data<T>::mergeSort(bool byX)
 {
-  int mid;
 
-  if ((high - low) < 1)
-  {
-    return;
-  }
-  mid = (high + low) / 2;
+	int size = x_coords.size();
+	vector<T> tmp_main(size);
+	vector<T> tmp_other(size);
 
-  mergeSplit(A, B, C, D, low, mid);
-  mergeSplit(A, B, C, D, mid + 1, high);
-  mergeArray(A, B, C, D, low, mid, high);
-  copyArray(A, B, low, high);
-  copyArray(C, D, low, high);
+	if (byX)
+	{
+		mergeSplit(x_coords, tmp_main, y_coords, tmp_other, 0, size - 1);
+	}
+	else
+	{
+		mergeSplit(y_coords, tmp_main, x_coords, tmp_other, 0, size - 1);
+	}
+}
+
+template <class T>
+void Data<T>::mergeArray(vector<T> &A, vector<T> &B, vector<T> &C, vector<T> &D, int low, int mid, int high)
+{
+	int i, j, k;
+
+	i = low;
+	j = mid + 1;
+	k = low;
+
+	while (i <= mid && j <= high)
+	{
+		if (A[i] < A[j])
+		{
+			B[k] = A[i];
+			D[k] = C[i];
+			i++;
+		}
+		else
+		{
+			B[k] = A[j];
+			D[k] = C[j];
+			j++;
+		}
+		k++;
+	}
+	if (i > mid)
+	{
+		for (; j <= high; j++)
+		{
+			B[k] = A[j];
+			D[k++] = C[j];
+		}
+	}
+	else
+	{
+		for (; i <= mid; i++)
+		{
+			B[k] = A[i];
+			D[k++] = C[i];
+		}
+	}
+}
+
+template <class T>
+void Data<T>::copyArray(vector<T> &A, vector<T> &B, int low, int high)
+{
+	for (int i = low; i <= high; i++)
+	{
+		A[i] = B[i];
+	}
+}
+
+template <class T>
+void Data<T>::mergeSplit(vector<T> &A, vector<T> &B, vector<T> &C, vector<T> &D, int low, int high)
+{
+	int mid;
+
+	if ((high - low) < 1)
+	{
+		return;
+	}
+	mid = (high + low) / 2;
+
+	mergeSplit(A, B, C, D, low, mid);
+	mergeSplit(A, B, C, D, mid + 1, high);
+	mergeArray(A, B, C, D, low, mid, high);
+	copyArray(A, B, low, high);
+	copyArray(C, D, low, high);
 }

@@ -12,6 +12,8 @@ Este programa tiene como propósito recibir una lista de coordenadas por las cua
 
 ### Selecciona y usa una estructura lineal adecuada al problema
 
+El programa utiliza una estructura de lista ligada doble, ya que al estar trabajando con series de coordendas y caminos, es conveniente ir pasando de un punto al siguiente de forma rápida y eficiente, para indicarle al sistema robótico la dirección a la que se debe dirigir. Igualmente, se creó una nueva clase, la Coordenada, para poder representar los puntos de manera eficiente. Una vez leído el archivo, se puede llamar la función "generatePath" para transformar los puntos leídos en el archivo en una lista ligada de coordenadas, con la que se pueden manipular los datos conforme sea necesario.
+
 ### Selecciona un algoritmo de ordenamiento adecuado al problema
 
 El programa utiliza un algoritmo tipo Merge Sort para ordenar las coordenadas, ya sea basándose en la coordenada X o en la coordenada Y. En ambos casos, utiliza el algoritmo para ordenar ambas listas, usando una de ellas como referencia. El motivo por el cual se utilizó este algoritmo es porque es rápido en la mayoría de los casos, y su peor caso, que es cuando está casi ordenada, será raro encontrarlo, ya que los puntos están generados aleatoriamente. En el archivo main.h se puede ver la ejecución de un ordenamiento con la coordenada X como referencia en la línea 18, y un ordenamiento con la coordenada Y como referencia en la línea 22.
