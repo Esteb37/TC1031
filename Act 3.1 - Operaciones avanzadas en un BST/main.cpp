@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	BST<int> bst;
 	string ans;
 
-	bst.add(10);
+	bst.add(7);
 
 	ans = "[10]\n[10]\n[10]\n[10]";
 	cout << "\n"
@@ -28,11 +28,14 @@ int main(int argc, char *argv[])
 			 << "2.- esperada " << 1 << "\n programa " << bst.height() << "\n";
 	cout << (1 == bst.height() ? "success\n" : "fail\n");
 
-	bst.add(12);
-	bst.add(8);
-	bst.add(110);
-	bst.add(112);
-	bst.add(18);
+	
+
+bst.add(1);
+bst.add(2);
+bst.add(8);
+bst.add(12);
+bst.add(5);
+
 
 	ans = "[10 8 12 110 18 112]\n[8 10 12 18 110 112]\n[8 18 112 110 12 10]\n[10 8 12 110 18 112]";
 	cout << "\n"

@@ -22,8 +22,9 @@ public:
 	void inorder(std::stringstream &) const;
 	void preorder(std::stringstream &) const;
 	void postorder(std::stringstream &) const;
-	void levelorder(std::stringstream &) const;
+
 	void print(std::stringstream &) const;
+    void printLevel(std::stringstream &, int level) const;
 	void ancestors(std::stringstream &, T val) const;
 	void whatlevelamI(int &, T) const;
 	int depth() const;
@@ -121,29 +122,6 @@ template <class T>
 void Node<T>::print(std::stringstream &aux) const
 {
 	aux << value << " ";
-}
-
-template <class T>
-void Node<T>::levelorder(std::stringstream &aux) const
-{
-
-	if (left != 0)
-	{
-		left->print(aux);
-	}
-	if (right != 0)
-	{
-		right->print(aux);
-	}
-
-	if (left != 0)
-	{
-		left->levelorder(aux);
-	}
-	if (right != 0)
-	{
-		right->levelorder(aux);
-	}
 }
 
 template <class T>
@@ -390,15 +368,36 @@ std::string BST<T>::levelorder() const
 {
 	std::stringstream aux;
 
-	aux << "[";
-	if (!empty())
-	{
-		root->print(aux);
-		root->levelorder(aux);
-	}
-	aux.seekp(-1, std::ios_base::end);
+	int h = height();
+
+    int i;
+
+    aux << "[";
+
+
+    for (i=1; i<=h; i++)
+    {
+        root->printLevel(aux, i);
+    }
+    aux.seekp(-1, std::ios_base::end);
 	aux << "]";
 	return aux.str();
+}
+
+template <class T>
+void Node<T>::printLevel(std::stringstream &aux, int level) const
+{
+    
+    if (level == 1)
+        return print(aux);
+    else if (level > 1)
+    {
+        if(left)
+            left->printLevel(aux, level-1);
+
+        if(right)
+            right->printLevel(aux, level-1);
+    }
 }
 
 template <class T>
