@@ -2,44 +2,26 @@
 
 ## Análisis de complejidad temporal
 
-La complejidad es O(N), ya que primero se debe atravesar la lista hasta el punto seleccionado para poder colocar el nuevo nodo. En el peor de los casos, el punto seleccionado está en la posición N.
+La complejidad es O(logN), ya que en el peor de los casos, será necesario realizar H swaps, donde H es la altura del árbol, que es el log de la cantidad N de datos que tiene.
 
-# removeFirst
+# pop
 
-La complejidad es constante, O(1), ya que no importa la longitud de la lista, se ejecuta siempre la misma única acción.
+La complejidad es O(logN), ya que en el peor de los casos, será necesario realizar H swaps, donde H es la altura del árbol, que es el log de la cantidad N de datos que tiene.
 
-# deleteAt
-
-## Análisis de complejidad temporal
-
-La complejidad es O(N), ya que primero se debe atravesar la lista hasta el punto seleccionado para poder eliminar el nodo. En el peor de los casos, el punto seleccionado está en la posición N.
-
-# update
+# top
 
 ## Análisis de complejidad temporal
 
-La complejidad es O(N), ya que primero se debe atravesar la lista hasta el punto seleccionado para poder actualizar el valor del nodo. En el peor de los casos, el punto seleccionado está en la posición N.
-
-# search
-
-## Análisis de complejidad temporal
-
-La complejidad es O(N), ya que se debe atravesar la lista hasta encontrar el valor seleccionado. En el peor de los casos, el valor a buscar se encuentra en la posición N.
+La complejidad es O(1), ya que solamente es necesario obtener el primer dato del arreglo. 
 
 # empty
 
 ## Análisis de complejidad temporal
 
-La complejidad es constante, O(1), ya que no importa la longitud de la lista, se ejecuta siempre la misma única acción.
+La complejidad es O(1), ya que solamente es necesario obtener si el contador es igual a cero
 
-# toStringForward
-
-## Análisis de complejidad temporal
-
-La complejidad es O(N), ya que se debe atravesar la lista completa para poder publicar cada uno de sus nodos.
-
-# toStringBackward
+# size
 
 ## Análisis de complejidad temporal
 
-La complejidad es O(N), ya que se debe atravesar la lista completa para poder publicar cada uno de sus nodos.
+La complejidad es O(1), ya que solamente es necesario obtener el valor contador
