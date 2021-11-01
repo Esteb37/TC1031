@@ -6,6 +6,8 @@
 		"vector": "c",
 		"dlist.h": "c",
 		"iostream": "c",
-		"ostream": "c"
+		"ostream": "c",
+		"cmath": "c",
+		"math.h": "c"
 	}
 }

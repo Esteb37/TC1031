@@ -142,8 +142,8 @@ void Data<T>::printPath()
 template <class T>
 void Data<T>::testPath()
 {
-	Coordinate<int> test(0, 0);
-	path.add(test);
+
+	int temp1, temp2, temp3;
 
 	cout << "\n\nFirst coordinate: " << path.getFirst().toString();
 
@@ -151,23 +151,57 @@ void Data<T>::testPath()
 
 	cout << "\n\nLength: " << path.length();
 
-	cout << "\n\nRemoved 15th coordinate with value: " << path.remove(15).toString();
+	temp1 = -1;
 
-	cout << "\nLength: " << path.length();
+	while (temp1 < 0 || temp1 >= path.length())
+	{
+		cout << "\n\nChoose an index to remove from the list: ";
+		cin >> temp1;
+		if (temp1 < 0 || temp1 >= path.length())
+			cout << "\n\nIndex out of bounds.";
+	}
 
-	cout << "\n\nAdded coordinate with value: " << test.toString();
-	cout << "\nLength: " << path.length();
+	Coordinate<int> removed = path.remove(temp1);
+	;
 
-	cout << "\n\nList contains (0, 0)?: " << path.contains(test);
+	cout << "\nRemoved coordinate with value: " << removed.toString();
 
-	test.set(5, 5);
+	cout << "\n\nLength: " << path.length();
 
-	cout << "\n\nSet (5, 5) in position 5.";
-	path.set(5, test);
+	cout << "\n\nAdd a new coordinate to the list:\nX value: ";
+	cin >> temp1;
+	cout << "Y value: ";
+	cin >> temp2;
 
-	cout << "\n\nValue at position 5: " << path.get(5).toString();
+	Coordinate<int> coord(temp1, temp2);
 
-	cout << "\n\nIndex of (5, 5): " << path.indexOf(test);
+	path.add(coord);
+
+	cout << "\nAdded coordinate with value: " << coord.toString();
+
+	cout << "\n\nLength: " << path.length();
+
+	cout << "\n\nFind a coordinate in the list:\nX value: ";
+	cin >> temp1;
+	cout << "Y value: ";
+	cin >> temp2;
+
+	coord.set(temp1, temp2);
+
+	cout << "\n\nList contains " << coord.toString() << "?: " << path.contains(coord);
+
+	cout << "\n\nSet a coordinate from the list:\nIndex: ";
+	cin >> temp1;
+	cout << "X value: ";
+	cin >> temp2;
+	cout << "Y value: ";
+	cin >> temp3;
+
+	coord.set(temp2, temp3);
+
+	path.set(temp1, coord);
+
+	cout << "\n\nSet " << coord.toString() << " in position " << temp1 << ".\n";
 }
 
 template <class T>

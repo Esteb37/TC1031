@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <math.h>
 
 using namespace std;
 
@@ -12,6 +13,9 @@ public:
 
 	T getX() const;
 	T getY() const;
+
+	float getDistance(Coordinate) const;
+	float getAngle(Coordinate) const;
 
 	void set(T, T);
 
@@ -69,4 +73,16 @@ void Coordinate<T>::operator=(const Coordinate<T> &source)
 {
 	x = source.getX();
 	y = source.getY();
+}
+
+template <class T>
+float Coordinate<T>::getDistance(Coordinate other) const
+{
+	return sqrt(((other.getX() - this->getX()) ^ 2 + (other.getY() - this->getY()) ^ 2));
+}
+
+template <class T>
+float Coordinate<T>::getAngle(Coordinate other) const
+{
+	return atan2(other.getY() - this->getY(), other.getX() - this->getX());
 }
