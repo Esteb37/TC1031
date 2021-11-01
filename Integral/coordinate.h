@@ -2,6 +2,9 @@
 #include <vector>
 #include <math.h>
 
+#ifndef COORDINATE_H
+#define COORDINATE_H
+
 using namespace std;
 
 template <class T>
@@ -78,7 +81,8 @@ void Coordinate<T>::operator=(const Coordinate<T> &source)
 template <class T>
 float Coordinate<T>::getDistance(Coordinate other) const
 {
-	return sqrt(((other.getX() - this->getX()) ^ 2 + (other.getY() - this->getY()) ^ 2));
+	return sqrt(pow(other.getX() - getX(), 2) +
+							pow(other.getY() - getY(), 2) * 1.0);
 }
 
 template <class T>
@@ -86,3 +90,5 @@ float Coordinate<T>::getAngle(Coordinate other) const
 {
 	return atan2(other.getY() - this->getY(), other.getX() - this->getX());
 }
+
+#endif

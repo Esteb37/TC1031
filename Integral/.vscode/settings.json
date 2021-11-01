@@ -8,6 +8,20 @@
 		"iostream": "c",
 		"ostream": "c",
 		"cmath": "c",
-		"math.h": "c"
+		"math.h": "c",
+		"atomic": "c",
+		"*.tcc": "c",
+		"deque": "c",
+		"string": "c",
+		"algorithm": "c",
+		"memory_resource": "c",
+		"memory": "c",
+		"random": "c",
+		"fstream": "c",
+		"sstream": "c",
+		"stdexcept": "c",
+		"tuple": "c",
+		"type_traits": "c",
+		"cstdlib": "cpp"
 	}
 }

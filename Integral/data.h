@@ -3,13 +3,15 @@
 #include <fstream>
 #include <vector>
 #include "dlist.h"
+#include "heap.h"
+
 using namespace std;
 
 /*
   Clase para manejar los datos recibidos, ordenarlos y procesarlos.
   Autor: Esteban Padilla Cerdio
   Creado: 19 de septiembre de 2021
-  Última versión: 20 de septiembre de 2021
+  Última versión: 1 de noviembre de 2021
   Título: data.h
 */
 
@@ -30,11 +32,13 @@ public:
 	void printPath();
 	void testPath();
 
+	void generateHeap();
+	void printHeap();
+	void chooseOrigin();
+
 	vector<T> getXCoords();
 	vector<T> getYCoords();
 	DList<T> getPath();
-
-	DList<T> path;
 
 private:
 	vector<T> x_coords;
@@ -48,6 +52,10 @@ private:
 	void mergeArray(vector<T> &, vector<T> &, vector<T> &, vector<T> &, int, int, int);
 	void copyArray(vector<T> &, vector<T> &, int, int);
 	void mergeSplit(vector<T> &, vector<T> &, vector<T> &, vector<T> &, int, int);
+
+	Heap<T> heap;
+	DList<T> path;
+	Coordinate<T> origin;
 };
 
 /*
@@ -162,7 +170,6 @@ void Data<T>::testPath()
 	}
 
 	Coordinate<int> removed = path.remove(temp1);
-	;
 
 	cout << "\nRemoved coordinate with value: " << removed.toString();
 
@@ -290,4 +297,42 @@ void Data<T>::mergeSplit(vector<T> &A, vector<T> &B, vector<T> &C, vector<T> &D,
 	mergeArray(A, B, C, D, low, mid, high);
 	copyArray(A, B, low, high);
 	copyArray(C, D, low, high);
+}
+
+template <class T>
+void Data<T>::generateHeap()
+{
+	heap.setSize(path.length());
+
+	DListIterator<T> iter(&path);
+	iter.begin();
+
+	for (int i = 0; i < path.length(); i++)
+	{
+		heap.add(iter());
+		++iter;
+	}
+
+	cout << heap.toString();
+}
+
+template <class T>
+void Data<T>::chooseOrigin()
+{
+	int index = -1;
+	cout << "Select an origin coordinate to order the points in relation to their distance to the origin.";
+	while (index < 0 || index >= path.length())
+	{
+		cout << "\nOrigin coordinate index: ";
+
+		cin >> index;
+
+		if (index < 0 || index >= path.length())
+		{
+			cout << "Index out of bounds.";
+		}
+	}
+
+	origin = path.get(index);
+	heap.setOrigin(origin);
 }

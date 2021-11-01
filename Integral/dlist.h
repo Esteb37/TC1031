@@ -13,6 +13,9 @@ template <class T>
 class Coordinate;
 
 template <class T>
+class DListIterator;
+
+template <class T>
 class DLink
 {
 private:
@@ -26,6 +29,7 @@ private:
 	DLink<T> *next;
 
 	friend class DList<T>;
+	friend class DListIterator<T>;
 };
 
 template <class T>
@@ -47,12 +51,12 @@ public:
 
 	void addFirst(Coordinate<T>);
 	void add(Coordinate<T>);
-	Coordinate<T> getFirst() const;
+	Coordinate<T> &getFirst() const;
 	Coordinate<T> removeFirst();
-	Coordinate<T> getLast() const;
+	Coordinate<T> &getLast() const;
 	Coordinate<T> removeLast() const;
 	int length() const;
-	Coordinate<T> get(int) const;
+	Coordinate<T> &get(int) const;
 	bool contains(Coordinate<T>) const;
 	bool empty() const;
 	void clear();
@@ -66,10 +70,16 @@ public:
 	bool removeFirstOcurrence(Coordinate<T>);
 	bool removeLastOcurrence(Coordinate<T>);
 
+	void addBefore(DListIterator<T> &, T);
+	void addAfter(DListIterator<T> &, T);
+	T removeCurrent(DListIterator<T> &);
+
 private:
 	DLink<T> *head = 0;
 	DLink<T> *tail = 0;
 	int size = 0;
+
+	friend class DListIterator<T>;
 };
 
 template <class T>
@@ -111,13 +121,13 @@ bool DList<T>::contains(Coordinate<T> val) const
 }
 
 template <class T>
-Coordinate<T> DList<T>::getFirst() const
+Coordinate<T> &DList<T>::getFirst() const
 {
 	return head->value;
 }
 
 template <class T>
-Coordinate<T> DList<T>::getLast() const
+Coordinate<T> &DList<T>::getLast() const
 {
 	return tail->value;
 }
@@ -190,7 +200,7 @@ Coordinate<T> DList<T>::removeFirst()
 }
 
 template <class T>
-Coordinate<T> DList<T>::get(int index) const
+Coordinate<T> &DList<T>::get(int index) const
 {
 	int pos;
 	DLink<T> *p;
@@ -476,6 +486,177 @@ bool DList<T>::removeLastOcurrence(Coordinate<T> val)
 	}
 
 	return false;
+}
+
+// NO
+template <class T>
+void DList<T>::addBefore(DListIterator<T> &itr, T val)
+{
+	DLink<T> *newLink;
+
+	// between
+	if (itr.previous != 0)
+	{
+		newLink->next = itr.current;
+		itr.current->previous = newLink;
+
+		itr.previous->next = newLink;
+		newLink->previous = itr.previous;
+
+		itr.previous = itr.previous->next;
+		size++;
+		// start
+	}
+	else
+	{
+		addFirst(val);
+		itr.previous = head;
+		itr.current = itr.previous->next;
+	}
+}
+
+template <class T>
+void DList<T>::addAfter(DListIterator<T> &itr, T val)
+{
+	DLink<T> *newLink;
+
+	// between
+	if (itr.current != 0)
+	{
+		newLink->next = itr.current->next;
+		itr.current->next->previous = newLink;
+
+		itr.current->next = newLink;
+		newLink->previous = itr.current;
+		size++;
+		// end
+	}
+	else if (itr.previous != 0)
+	{
+		itr.previous->next = newLink;
+		newLink->previous = itr.previous;
+
+		itr.current = newLink;
+		size++;
+		// start
+	}
+	else
+	{
+		addFirst(val);
+		itr.current = head;
+		itr.previous = 0;
+	}
+}
+
+template <class T>
+T DList<T>::removeCurrent(DListIterator<T> &itr)
+{
+	T val;
+
+	if (itr.previous == 0)
+	{
+		head = itr.current->next;
+		itr.current->next->previous = 0;
+	}
+	else
+	{
+		itr.previous->next = itr.current->next;
+		itr.current->next->previous = itr.previous;
+	}
+
+	val = itr.current->value;
+	delete itr.current;
+	itr.current = 0;
+
+	return val;
+}
+
+template <class T>
+class DListIterator
+{
+public:
+	DListIterator(DList<T> *);
+	DListIterator(const DListIterator<T> &);
+
+	bool begin();
+	bool end();
+	Coordinate<T> &operator()();
+	bool operator++();
+	void operator=(T);
+
+private:
+	DLink<T> *current;
+	DLink<T> *previous;
+	DList<T> *theList;
+
+	friend class DList<T>;
+};
+
+template <class T>
+DListIterator<T>::DListIterator(DList<T> *aList) : theList(aList)
+{
+	begin();
+}
+
+template <class T>
+DListIterator<T>::DListIterator(const DListIterator<T> &source) : theList(source.theList)
+{
+	begin();
+}
+
+template <class T>
+bool DListIterator<T>::begin()
+{
+	previous = 0;
+	current = theList->head;
+	return (current != 0);
+}
+
+template <class T>
+Coordinate<T> &DListIterator<T>::operator()()
+{
+	return current->value;
+}
+
+template <class T>
+bool DListIterator<T>::end()
+{
+	if (current == 0)
+	{
+		if (previous != 0)
+		{
+			current = previous->next;
+		}
+	}
+	return (current == 0);
+}
+
+template <class T>
+bool DListIterator<T>::operator++()
+{
+	if (current == 0)
+	{
+		if (previous == 0)
+		{
+			current = theList->head;
+		}
+		else
+		{
+			current = previous->next;
+		}
+	}
+	else
+	{
+		previous = current;
+		current = current->next;
+	}
+	return (current != 0);
+}
+
+template <class T>
+void DListIterator<T>::operator=(T val)
+{
+	current->value = val;
 }
 
 #endif /* DLIST_H_ */
