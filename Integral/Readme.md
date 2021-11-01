@@ -20,6 +20,8 @@ El programa utiliza un algoritmo tipo Merge Sort para ordenar las coordenadas, y
 
 ### Usa un árbol adecuado para resolver un problema
 
+El programa le permite al usuario seleccionar un punto de origen del sistema de coordenadas. Posteriormente, genera un árbol Heap de tipo mínimo basado en las distancias de cada uno de los puntos al origen. De esta manera, se crea una estructura de datos donde la raíz es el punto seleccionado, y los demás datos se acomodan orgánicamente según su distancia física al origen, estando los más cercanos posicionados antes en la estructura, y los más lejanos quedan hasta el final. Este tipo de estructura podría permitir posteriormente facilitar la creación de caminos optimizados entre dos puntos, ya que con este árbol heap es más sencillo obtener los puntos cercanos.
+
 ## SICT0301B: Evalúa los componentes
 
 ### Presenta Casos de Prueba correctos y completos para todas las funciones y procedimientos del programa,
