@@ -1,14 +1,15 @@
 {
   "files.associations": {
-    "array": "cpp",
-    "initializer_list": "cpp",
-    "utility": "cpp",
-    "*.tcc": "c",
-    "list": "c",
-    "functional": "cpp",
-    "iosfwd": "cpp",
-    "tuple": "cpp",
-    "iostream": "cpp",
-    "cmath": "cpp"
-  }
+	"array": "cpp",
+	"initializer_list": "cpp",
+	"utility": "cpp",
+	"*.tcc": "c",
+	"list": "c",
+	"functional": "cpp",
+	"iosfwd": "cpp",
+	"tuple": "cpp",
+	"iostream": "cpp",
+	"cmath": "cpp",
+	"new": "c"
+}
 }
