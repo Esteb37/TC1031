@@ -10,6 +10,9 @@
 	"tuple": "cpp",
 	"iostream": "cpp",
 	"cmath": "cpp",
-	"new": "c"
+	"new": "c",
+	"deque": "cpp",
+	"string": "cpp",
+	"vector": "cpp"
 }
 }
