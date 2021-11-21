@@ -12,7 +12,11 @@ Este programa tiene como propósito representar una situación hipotética donde
 
 ## Usa grafos para hacer analisis de información
 
+El programa utiliza un grafo para representar las posibles subestaciones a las cuales el rover puede llegar desde el lugar en donde está, basado en la distancia máxima que puede recorrer con un tanque de combustible lleno. El grafo se genera iterando a través de cada uno de los puntos, y obteniendo la lista de puntos que se encuentran a una distancia menor que la distancia máxima recorrible.
+
 ## Usa un algoritmo de búsqueda en grafos adecuado para resolver un problema
+
+El programa utiliza un algoritmo de Depth Search First para encontrar una posible ruta entre el punto en el que se encuentra el rover y el punto al que quiere llegar, de forma que nunca tenga que recorrer más distancia de la que es capaz con un solo tanque de combustible.
 
 ## SICT0301B: Evalúa los componentes
 
