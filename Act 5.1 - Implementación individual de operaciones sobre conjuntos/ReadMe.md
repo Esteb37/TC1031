@@ -1,13 +1,7 @@
-# Quadratic()
+# put
 
-## Análisis de complejidad temporal
+En el peor de los casos, debe atravesar todo el arreglo hasta encontrar un lugar disponible para el valor, por lo que la complejidad será de O(n)
 
-El constructor tiene una complejidad de O(n), ya que crea un arreglo de tamaño N y lo recorre para inicializarlo.
+# get
 
-# full
-
-## Análisis de complejidad temporal
-
-O(1), porque solamente se requiere hacer un cálculo con velocidad constante.
-
-#
+En el peor de los casos, debe atravesar todo el arreglo para encontrar el índice del valor que se está buscando, por lo que la complejidad será de O(n)
