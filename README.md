@@ -1,4 +1,8 @@
-# TC1031 Estructuras y algoritmos de
+# TC1031 Estructuras y algoritmos
+
+#### Esteban Padilla Cerdio
+
+#### A01703068
 
 # Formativas
 
