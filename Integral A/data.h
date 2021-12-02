@@ -37,6 +37,8 @@ public:
 	void chooseOrigin();
 	void testHeap();
 
+	void createFiles();
+
 	vector<T> getXCoords();
 	vector<T> getYCoords();
 	DList<T> getPath();
@@ -367,4 +369,25 @@ void Data<T>::testHeap()
 	cout << "\n\nLength: " << heap.getCount();
 
 	cout << heap.toString();
+}
+
+template <class T>
+void Data<T>::createFiles()
+{
+	ofstream myfile;
+	myfile.open("path.txt");
+	myfile << "------- Coordinate path ------\n\n";
+
+	for (int i = 0; i < path.length(); i++)
+	{
+		myfile << path.get(i).toString() << "\n";
+	}
+
+	myfile.close();
+	cout << "\n\nPrinted coordinate path to 'path.txt'";
+	myfile.open("heap.txt");
+	myfile << "------- Coordinate distance minheap ------\n\n";
+	myfile << heap.toString();
+	myfile.close();
+	cout << "\n\nPrinted coordinate minheap to 'heap.txt'";
 }

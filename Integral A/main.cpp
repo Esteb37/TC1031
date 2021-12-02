@@ -52,5 +52,6 @@ int main()
 		 << endl;
 	data.testHeap();
 
+	data.createFiles();
 	return 0;
 }
