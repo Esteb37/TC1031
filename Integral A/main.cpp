@@ -23,26 +23,34 @@ int main()
 	data.readFile("points.txt");
 
 	cout << "\n---- Sorted by X Coordinates: ----\n"
-			 << endl;
+		 << endl;
 	data.sortByX();
 	data.print();
 
 	cout << "\n---- Sorted by Y Coordinates: ----\n"
-			 << endl;
+		 << endl;
 	data.sortByY();
 	data.print();
 
 	cout << "\n------ As a coordinate path: ------\n"
-			 << endl;
+		 << endl;
 	data.generatePath();
 	data.printPath();
+
+	cout << "\n\n----------- Testing path -----------"
+		 << endl;
+
 	data.testPath();
 
 	cout << "\n\n------ As a heap: ------\n"
-			 << endl;
+		 << endl;
 
 	data.chooseOrigin();
 	data.generateHeap();
+
+	cout << "\n\n------------ Testing heap ------------"
+		 << endl;
+	data.testHeap();
 
 	return 0;
 }

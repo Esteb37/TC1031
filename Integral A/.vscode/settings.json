@@ -22,6 +22,7 @@
 		"stdexcept": "c",
 		"tuple": "c",
 		"type_traits": "c",
-		"cstdlib": "cpp"
+		"cstdlib": "cpp",
+		"iomanip": "cpp"
 	}
 }

@@ -36,6 +36,9 @@ public:
 	void setSize(int);
 
 	std::string toString() const;
+
+	unsigned int getSize() { return size; }
+	unsigned int getCount() { return count; }
 };
 
 template <class T>

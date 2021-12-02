@@ -35,6 +35,7 @@ public:
 	void generateHeap();
 	void printHeap();
 	void chooseOrigin();
+	void testHeap();
 
 	vector<T> getXCoords();
 	vector<T> getYCoords();
@@ -153,7 +154,7 @@ void Data<T>::testPath()
 
 	int temp1, temp2, temp3;
 
-	cout << "\n\nFirst coordinate: " << path.getFirst().toString();
+	cout << "\nFirst coordinate: " << path.getFirst().toString();
 
 	cout << "\n\nLast coordinate: " << path.getLast().toString();
 
@@ -335,4 +336,35 @@ void Data<T>::chooseOrigin()
 
 	origin = path.get(index);
 	heap.setOrigin(origin);
+}
+
+template <class T>
+void Data<T>::testHeap()
+{
+	int temp1, temp2, temp3;
+
+	cout << "\n\nLength: " << heap.getCount();
+
+	cout << "\n\nPopping root...";
+
+	Coordinate<int> removed = heap.remove();
+
+	cout << "\n\nRemoved coordinate with value: " << removed.toString();
+
+	cout << "\n\nLength: " << heap.getCount();
+
+	cout << "\n\nAdd a new coordinate to the heap:\nX value: ";
+	cin >> temp1;
+	cout << "Y value: ";
+	cin >> temp2;
+
+	Coordinate<int> coord(temp1, temp2);
+
+	heap.add(coord);
+
+	cout << "\nAdded coordinate with value: " << coord.toString();
+
+	cout << "\n\nLength: " << heap.getCount();
+
+	cout << heap.toString();
 }

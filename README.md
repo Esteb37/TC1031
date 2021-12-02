@@ -1,4 +1,6 @@
-# TC1031_Estructuras_Formativas
+# TC1031 Estructuras y algoritmos de
+
+# Formativas
 
 ## Correcciones
 
@@ -20,3 +22,12 @@
   - bredth first search
 
 - Se subió correctamente la actividad 5.1 con su análisis de complejidad
+
+# Integrales
+
+## Correcciones
+
+### Integral A
+
+- Para los casos de prueba de la DList, ahora se le permite al usuario elegir las coordenadas e índices a modificar
+- Se agregaron casos de prueba para el árbol heap
