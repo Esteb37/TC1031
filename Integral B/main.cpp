@@ -33,6 +33,8 @@ int main()
 
 	data.print();
 
+	data.testStructures();
+
 	int maxDist;
 
 	cout << "\nDistancia máxima que el rover puede recorrer con un tanque (para mejores resultados, mantener el valor entre 400 y 1000): ";
@@ -47,5 +49,7 @@ int main()
 	cin >> goal;
 	cout << data.findPath(start, goal);
 	cout << endl;
+
+	data.createFiles(start, goal);
 	return 0;
 }

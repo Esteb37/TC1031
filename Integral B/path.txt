@@ -1,0 +1,8 @@
+------- Camino optimizado ------
+
+
+Ruta:
+	Subestación 2 (242, 929)
+	Subestación 4 (673, 846)
+	Subestación 1 (975, 506)
+	Subestación 5 (956, 35)
