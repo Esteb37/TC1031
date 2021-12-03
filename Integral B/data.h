@@ -25,7 +25,6 @@ public:
 	void createDistanceGraph(int);
 	void print();
 	string findPath(int, int);
-	void testGraph();
 	void testStructures();
 	void createFiles(int, int);
 
