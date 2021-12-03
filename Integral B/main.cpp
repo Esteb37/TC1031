@@ -35,7 +35,7 @@ int main()
 
 	int maxDist;
 
-	cout << "\nDistancia máxima que el rover puede recorrer con un tanque (mientras mayor sea el valor, más rutas estarán disponibles): ";
+	cout << "\nDistancia máxima que el rover puede recorrer con un tanque (para mejores resultados, mantener el valor entre 400 y 1000): ";
 	cin >> maxDist;
 
 	data.createDistanceGraph(maxDist);
