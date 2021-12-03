@@ -37,3 +37,13 @@
 - Se agregaron casos de prueba para el árbol heap
 - Se imprimen las estructuras en archivos
 - Se actualizó el ReadMe con el análisis de complejidad e indicaciones puntuales de dónde se encuentran demostradas las evidencias
+
+### Integral B
+
+- Se agregó el KDTree como estructura adicional que no se vio durante el curso
+- Se crearon casos de prueba para el KDTree
+- Se agregó la información sobre el KDTree al ReadMe
+- Se describen los procesos de funcionamiento de inserción, consulta y eliminación dentro del KDTree
+- Se hicieron casos de prueba para todo el programa
+- Se crean tres archivos con la ruta generada para el rover, la lista de subestaciones al alcance de cada subestación, y las subestaciones ordenadas según su posición en forma de un árbol ordenado por niveles
+- Se actualizó el ReadMe con el análisis de complejidad e indicaciones puntuales de dónde se encuentran demostradas las evidencias
