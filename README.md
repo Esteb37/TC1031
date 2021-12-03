@@ -36,3 +36,4 @@
 - Para los casos de prueba de la DList, ahora se le permite al usuario elegir las coordenadas e índices a modificar
 - Se agregaron casos de prueba para el árbol heap
 - Se imprimen las estructuras en archivos
+- Se actualizó el ReadMe con el análisis de complejidad e indicaciones puntuales de dónde se encuentran demostradas las evidencias
