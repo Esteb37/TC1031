@@ -28,6 +28,50 @@ Esta evidencia se encuentra en la función testStructures, que le permite al usu
 
 ### Hace un análisis de complejidad correcto y completo para todo el programa y sus compenetes,
 
+- ### Main
+  La función con mayor complejidad utilizada aquí es de O(N<sup>2</sup>), por lo que esa sería la complejidad del programa
+- ### Coordinate
+
+  Todas las funciones de esta clase tienen una complejidad de O(1), ya que cada objeto consiste únicamente de dos puntos, y todas las operaciones se realizan a partir de esos dos únicos elementos.
+
+- ### Graph
+
+  - #### addEdgeAdjList, addEdgeAdjMatrix
+    La complejidad es de O(1), ya que solamente se está agregando un valor en un punto específico de la estructura
+  - #### printAdjList, printAdjMat
+    En el peor de los casos, donde todos los nodos están conectados, tienen una complejidad de O(N<sup>2</sup>), ya que por cada nodo se tendrían que publicar todos los nodos con los que se conecta
+  - #### BFS, breadthHelper, contains
+    En el peor de los casos, se visitará cada vértice y cada edge, por lo que la complejidad sería de O(V+E)
+  - #### print_path
+    En el peor de los casos, la ruta generada atraviesa todos los nodos, por lo que tendría una complejidad de O(N)
+  - #### createDistanceGraph
+    La función atraviesa cada nodo y lo compara con todos los demás nodos para ver si está a una distancia accesible, por lo que tiene una complejidad de O(N<sup>2</sup>)
+
+- ### KDTree
+
+  - #### empty
+    Sin importar la cantidad de datos, esta función solo realiza una acción, por lo que tiene complejidad de O(1)
+  - #### add, find, remove
+    Puesto que es un tipo de BST, estos algoritmos van reduciendo la cantidad de datos a iterar a la mitad con cada iteración, por lo que la complejidad termina siendo de O(logN)
+  - #### levelOrder
+    Esta función debe pasar por todos los nodos para poder imprimirlos, por lo que tiene una complejidad de O(N)
+  - #### height
+    Para encontrar el punto en el nivel más bajo, se debe atravesar todo el árbol, por lo que tiene una complejidad de O(N)
+
+- ### Data
+  - #### readFile
+    Esta función atraviesa todas las líneas del archivo para extraer las coordenadas, por lo que tiene una complejidad de O(N)
+  - #### createDistanceGraph
+    Solo llama a la función de mismo nombre graph, por lo que tiene la misma complejidad de O(N<sup>2</sup>)
+  - #### print
+    Esta función imprime todos los nodos, por lo que tiene una complejidad de O(N)
+  - #### findPath
+    Esta función manda a llamar el BFS del grafo, el cual tiene una complejidad de O(V+E)
+  - #### testStructures
+    Dentro de esta función se mandan a llamar el insert, remove y find del árbol, por lo que tiene una complejidad de O(logN)
+  - #### createFiles
+    La función más compleja dentro de esta función tiene una complejidad de O(N<sup>2</sup>)
+
 ## SEG0702A: Tecnologías de Vanguardia
 
 ### Investiga e implementa un algoritmo o una estructura de datos que no se vió durante el curso.

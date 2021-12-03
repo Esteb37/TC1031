@@ -39,16 +39,12 @@ public:
 	void addEdgeAdjMatrix(int, int);
 	string printAdjList();
 	string printAdjMat();
-	string DFS(int, int);
-	void depthHelper(int, int, stack<int> &, list<int> &, vector<vector<int>> &);
 	string BFS(int, int);
 	void breadthHelper(int, int, queue<int> &, list<int> &, vector<vector<int>> &);
 	string print_visited(list<int>);
 	string print_path(vector<vector<int>> &, int, int);
 	bool contains(list<int>, int);
 	void sortAdjList();
-	void loadGraphList(string, int, int);
-	void loadGraphMat(string, int, int);
 	void createDistanceGraph(vector<Coordinate<T>>, int);
 };
 
@@ -144,48 +140,6 @@ string Graph<T>::printAdjMat()
 		}
 	}
 	return aux.str();
-}
-
-template <class T>
-string Graph<T>::DFS(int start, int goal)
-{
-	stack<int> st;
-	list<int> visited;
-	vector<vector<int>> paths(nodes, vector<int>(1, -1));
-	st.push(start);
-	depthHelper(start, goal, st, visited, paths);
-	return print_path(paths, start, goal);
-}
-
-template <class T>
-void Graph<T>::depthHelper(int current,
-						   int goal,
-						   stack<int> &st,
-						   list<int> &visited,
-						   vector<vector<int>> &paths)
-{
-
-	if (current == goal)
-	{
-		print_visited(visited);
-	}
-	else if (st.empty())
-	{
-		cout << "No hay rutas disponislbes.";
-	}
-	else
-	{
-		current = st.top();
-		st.pop();
-		visited.push_back(current);
-		for (int i = 0; i < adjList[current].size(); i++)
-			if (!contains(visited, adjList[current][i]))
-			{
-				st.push(adjList[current][i]);
-				paths[adjList[current][i]][0] = current;
-			}
-		depthHelper(current, goal, st, visited, paths);
-	}
 }
 
 template <class T>
